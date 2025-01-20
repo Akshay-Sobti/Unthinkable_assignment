@@ -1,0 +1,193 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Flexbox Utility Classes */
+.d-flex {
+    display: flex;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+/* Wrapper for the main user table content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main card style */
+.bg-white {
+    background-color: white;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.p-3 {
+    padding: 1.5rem;
+}
+
+/* Upload Section */
+input[type="file"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #117a8b;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* Scrollable Table Wrapper */
+.table-container {
+    max-height: 400px; /* Adjust the height of the table as needed */
+    overflow-y: auto; /* Allow scrolling when content overflows */
+    position: relative;
+}
+
+/* Fix Table Headers */
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff; /* Optional: make the header background white */
+    z-index: 1; /* Ensure it stays on top of the table body */
+}
+
+/* Add margin for buttons */
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .w-50 {
+        width: 100%;
+    }
+
+    .table-container {
+        max-height: 300px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Stack inputs and buttons vertically */
+    .form-control {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 6px;
+    }
+}
