@@ -5,7 +5,6 @@ const UserSchema = new mongoose.Schema({
     category: { type: String, required: true }
 });
 
-// Explicitly specify the collection name
 const UserModel = mongoose.model("product", UserSchema, "product");
 
 module.exports = UserModel;
