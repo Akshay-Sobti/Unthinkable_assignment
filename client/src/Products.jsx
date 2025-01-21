@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Users() {
-    const [users, setUsers] = useState([]);  // State for storing users
+function Products() {
+    const [products, setProducts] = useState([]);  // State for storing users
     const [searchQuery, setSearchQuery] = useState("");  // State for storing search input
     const [file, setFile] = useState(null);  // State for storing file to upload
     const [fileUploaded, setFileUploaded] = useState(false);  // State to track if file is uploaded
@@ -12,10 +12,10 @@ function Users() {
     const [submittedUrl, setSubmittedUrl] = useState("");  // State to store the submitted URL
 
     // Fetch users based on the search query
-    const fetchUsers = async (query = "") => {
+    const fetchProducts = async (query = "") => {
         try {
             const result = await axios.get(`http://localhost:3001/search?query=${query}`);
-            setUsers(result.data);  // Set users to search results
+            setProducts(result.data);  // Set users to search results
         } catch (err) {
             console.log(err);
         }
@@ -23,7 +23,7 @@ function Users() {
 
     // Fetch all users initially
     useEffect(() => {
-        fetchUsers();
+        fetchProducts();
     }, []);
 
     // Handle search input change
@@ -33,7 +33,7 @@ function Users() {
 
     // Handle search button click
     const handleSearchClick = () => {
-        fetchUsers(searchQuery);  // Trigger search when the user clicks the search button
+        fetchProducts(searchQuery);  // Trigger search when the user clicks the search button
     };
 
     // Handle file input change
@@ -72,20 +72,14 @@ function Users() {
         console.log("URL submitted:", url);  // Handle URL logic (e.g., fetch or process)
     };
 
-    // Handle file download
-    const handleDownload = () => {
-        const link = document.createElement("a");
-        link.href = `http://localhost:3001${fileUrl}`;  // Use the correct file URL
-        link.download = fileUrl.split('/').pop();  // Use the file's name as the download file name
-        link.click();  // Trigger the download
-    };
+    
 
     // Handle delete user
     const handleDelete = async (userId) => {
         try {
             // Ensure this matches the backend '/users/:id'
-            await axios.delete(`http://localhost:3001/users/${userId}`);  
-            setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));  // Remove deleted user from state
+            await axios.delete(`http://localhost:3001/products/${userId}`);  
+            setProducts((prevUsers) => prevUsers.filter((user) => user._id !== userId));  // Remove deleted user from state
         } catch (err) {
             console.error("Failed to delete user:", err);
         }
@@ -129,23 +123,14 @@ function Users() {
                     </div>
                 )}
 
-                {/* View/Download File Button after file is uploaded */}
+                {/* View File Button after file is uploaded */}
                 {fileUploaded && (
                     <div>
                         <a
                             href={`http://localhost:3001${fileUrl}`} // Corrected file URL to access in 'public/images' folder
                             target="_blank"  // Open in a new tab
                             rel="noopener noreferrer"
-                            className="btn btn-info me-2"
-                        >
-                            View
-                        </a>
-                        <button
-                            onClick={handleDownload}  // Trigger file download
-                            className="btn btn-warning"
-                        >
-                            Download
-                        </button>
+                            className="btn btn-info me-2"> View </a>
                     </div>
                 )}
 
@@ -197,7 +182,7 @@ function Users() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => (
+                                {products.map((user) => (
                                     <tr key={user._id}>
                                         <td>{user.name}</td>
                                         <td>{user.category}</td>
@@ -226,4 +211,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default Products;
