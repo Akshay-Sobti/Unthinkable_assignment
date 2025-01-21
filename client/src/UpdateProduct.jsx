@@ -2,14 +2,14 @@ import React, {useState, useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function UpdateUser() {
+function UpdateProduct() {
     const {id} = useParams()
     const [name, setName] = useState()
     const [category, setCategory] = useState()
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getUser/'+id)
+        axios.get('http://localhost:3001/getproduct/'+id)
         .then(result => {console.log(result)
             setName(result.data.name)
             setCategory(result.data.category)
@@ -19,7 +19,7 @@ function UpdateUser() {
 
     const Update = (e) => {
         e.preventDefault();
-        axios.put("http://localhost:3001/updateUser/"+id, {name, category})
+        axios.put("http://localhost:3001/updateProduct/"+id, {name, category})
         .then(result => {
             console.log(result)
             navigate('/')
@@ -53,4 +53,4 @@ function UpdateUser() {
     );
 }
 
-export default UpdateUser;
+export default UpdateProduct;
