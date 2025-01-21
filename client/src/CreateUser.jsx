@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function CreateUser() {
+function CreateProduct() {
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ function CreateUser() {
         e.preventDefault();
         // Make sure the payload only includes name and category
         axios
-            .post("http://localhost:3001/createUser", { name, category })
+            .post("http://localhost:3001/createProduct", { name, category })
             .then(result => {
                 console.log(result);
                 navigate('/');
@@ -49,4 +49,4 @@ function CreateUser() {
     );
 }
 
-export default CreateUser;
+export default CreateProduct;
